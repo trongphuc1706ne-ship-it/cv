@@ -1,1 +1,843 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<title>Portfolio | Lê Trọng Phúc</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#070b17;
+    --card:#111827;
+    --text:#ffffff;
+    --sub:#cbd5e1;
+    --main:#8b5cf6;
+    --border:rgba(255,255,255,0.08);
+}
+
+body.light{
+    --bg:#f4f4f5;
+    --card:#ffffff;
+    --text:#111827;
+    --sub:#4b5563;
+    --main:#6d28d9;
+    --border:rgba(0,0,0,0.08);
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:0.4s;
+}
+
+/* =========================
+   BACKGROUND EFFECT
+========================= */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.bg span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation:snow linear infinite;
+}
+
+@keyframes snow{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.2);
+    z-index:999;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:var(--main);
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--text);
+    margin:0 15px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--main);
+}
+
+.theme-btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:30px;
+    background:var(--main);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    padding:140px 8%;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-text h1{
+    font-size:68px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-text h1 span{
+    color:var(--main);
+}
+
+.hero-text h3{
+    font-size:24px;
+    color:var(--sub);
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:var(--sub);
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 28px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.primary{
+    background:var(--main);
+    color:white;
+}
+
+.secondary{
+    border:2px solid var(--main);
+    color:var(--main);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* =========================
+   AVATAR
+========================= */
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    min-width:300px;
+}
+
+.avatar{
+    width:350px;
+    height:450px;
+    overflow:hidden;
+    border-radius:30px;
+    position:relative;
+    border:3px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 40px rgba(139,92,246,0.5);
+    transition:0.5s;
+}
+
+.avatar:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.avatar::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.7),
+        transparent
+    );
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:100px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.title h2{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.title p{
+    color:var(--sub);
+}
+
+/* =========================
+   CARD
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:30px;
+    border-radius:25px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:var(--main);
+}
+
+.card h3{
+    color:var(--main);
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--sub);
+    line-height:1.8;
+}
+
+/* =========================
+   ACHIEVEMENT
+========================= */
+
+.achievement{
+    background:linear-gradient(135deg,var(--main),#0ea5e9);
+    border-radius:30px;
+    padding:60px;
+    text-align:center;
+    color:white;
+}
+
+.achievement h2{
+    font-size:45px;
+    margin-bottom:25px;
+}
+
+.achievement p{
+    line-height:2;
+    font-size:18px;
+}
+
+/* =========================
+   PRODUCT
+========================= */
+
+.product{
+    background:var(--card);
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    transition:0.4s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+}
+
+.product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-content{
+    padding:25px;
+}
+
+.product-content h3{
+    color:var(--main);
+    margin-bottom:10px;
+}
+
+.product-content p{
+    color:var(--sub);
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact-info,
+.contact-form{
+    background:var(--card);
+    padding:35px;
+    border-radius:25px;
+    border:1px solid var(--border);
+}
+
+.contact-info h3,
+.contact-form h3{
+    color:var(--main);
+    margin-bottom:20px;
+}
+
+.contact-info p{
+    color:var(--sub);
+    line-height:2;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+    color:var(--text);
+}
+
+textarea{
+    height:150px;
+    resize:none;
+}
+
+form button{
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:var(--main);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* =========================
+   ADVERTISEMENT
+========================= */
+
+.ad-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:60px;
+    border-radius:30px;
+    text-align:center;
+}
+
+.ad-box h2{
+    font-size:52px;
+    color:var(--main);
+    margin-bottom:20px;
+}
+
+.ad-box p{
+    color:var(--sub);
+    line-height:2;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:var(--sub);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:48px;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .avatar{
+        width:280px;
+        height:380px;
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg" id="bg"></div>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">PHUC.</div>
+
+    <nav>
+        <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kĩ năng</a>
+        <a href="#products">Sản phẩm</a>
+        <a href="#contact">Liên hệ</a>
+    </nav>
+
+    <button class="theme-btn" onclick="toggleTheme()">
+        Đổi Chủ Đề
+    </button>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Xin chào,<br>
+            Tôi là <span>Lê Trọng Phúc</span>
+        </h1>
+
+        <h3>
+            Sinh viên • UI/UX Designer • Creative Designer
+        </h3>
+
+        <p>
+            Tôi là sinh viên tại Đại học Gia Định (GDU),
+            yêu thích thiết kế website hiện đại,
+            thiết kế poster điện ảnh và phát triển ý tưởng sáng tạo.
+            Đam mê tập gym, đá cầu và nghệ thuật cinematic.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#contact" class="btn primary">
+                Liên Hệ
+            </a>
+
+            <a href="#products" class="btn secondary">
+                Sản Phẩm
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        <div class="avatar">
+
+            <!-- THAY AVATAR -->
+            <img src="images/avatar.jpg" alt="Lê Trọng Phúc">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="title">
+        <h2>Thông Tin Cá Nhân</h2>
+        <p>Giới thiệu tổng quan về bản thân</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Họ Và Tên</h3>
+            <p>Lê Trọng Phúc</p>
+        </div>
+
+        <div class="card">
+            <h3>Năm Sinh</h3>
+            <p>2006</p>
+        </div>
+
+        <div class="card">
+            <h3>Ngành Nghề</h3>
+            <p>Sinh viên</p>
+        </div>
+
+        <div class="card">
+            <h3>Nơi Học Tập</h3>
+            <p>Đại học Gia Định (GDU)</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <div class="title">
+        <h2>Kĩ Năng & Sở Thích</h2>
+        <p>Những điều tôi phát triển trong quá trình học</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Thiết Kế UI/UX</h3>
+
+            <p>
+                Thiết kế giao diện website hiện đại,
+                tối ưu trải nghiệm người dùng.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Tư Duy Sáng Tạo</h3>
+
+            <p>
+                Phát triển ý tưởng nghệ thuật,
+                cinematic concept và sáng tạo nội dung.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Vẽ Tay & Vẽ Máy</h3>
+
+            <p>
+                Thành thạo sketch ý tưởng bằng tay
+                và thiết kế kỹ thuật số.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Sở Thích</h3>
+
+            <p>
+                Tập gym, đá cầu,
+                thiết kế poster điện ảnh.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ACHIEVEMENT -->
+<section>
+
+    <div class="achievement">
+
+        <h2>Thành Tựu</h2>
+
+        <p>
+            • Năm 2023 đạt giải chạy kinh tại trường THPT.<br><br>
+
+            • Đã tốt nghiệp trình độ phổ thông.<br><br>
+
+            • Hoàn thành quá trình học tập và phát triển kỹ năng tại GDU.<br><br>
+
+            • Định hướng trở thành nhà thiết kế poster phim điện ảnh chuyên nghiệp.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+
+    <div class="title">
+        <h2>Sản Phẩm Đã Tạo</h2>
+        <p>Các sản phẩm thiết kế trong quá trình học</p>
+    </div>
+
+    <div class="grid">
+
+        <!-- CARD -->
+        <div class="product">
+
+            <img src="./card.jpg">
+
+            <div class="product-content">
+
+                <h3>Business Card</h3>
+
+                <p>
+                    Thiết kế name card thương hiệu cá nhân.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- LOGO -->
+        <div class="product">
+
+            <img src="./logo.jpg">
+
+            <div class="product-content">
+
+                <h3>Logo TP</h3>
+
+                <p>
+                    Thiết kế logo cinematic luxury.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SUSHI -->
+        <div class="product">
+
+            <img src="./menu-sushi.jpg">
+
+            <div class="product-content">
+
+                <h3>Website Sushi</h3>
+
+                <p>
+                    Thiết kế website nhà hàng sushi.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ADVERTISEMENT -->
+<section>
+
+    <div class="ad-box">
+
+        <h2>LÊ TRỌNG PHÚC</h2>
+
+        <p>
+            Sinh viên Đại học Gia Định • UI/UX Designer • Creative Designer<br><br>
+
+            Chuyên thiết kế website hiện đại,
+            poster điện ảnh và sáng tạo nội dung cinematic.<br><br>
+
+            “Thiết kế không chỉ là hình ảnh —
+            mà còn là trải nghiệm và cảm xúc.”
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+    <div class="title">
+        <h2>Liên Hệ</h2>
+        <p>Kết nối và gửi thông tin cho tôi</p>
+    </div>
+
+    <div class="contact-container">
+
+        <!-- INFO -->
+        <div class="contact-info">
+
+            <h3>Thông Tin Liên Hệ</h3>
+
+            <p>
+                📧 Email: trongphuc@gmail.com
+            </p>
+
+            <p>
+                🎓 Đại học Gia Định (GDU)
+            </p>
+
+            <p>
+                💪 Gym • Đá cầu • Thiết kế
+            </p>
+
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form">
+
+            <h3>Gửi Thông Tin</h3>
+
+            <form>
+
+                <input type="text" placeholder="Họ và tên">
+
+                <input type="email" placeholder="Email">
+
+                <textarea placeholder="Nội dung tin nhắn"></textarea>
+
+                <button type="submit">
+                    Gửi Tin Nhắn
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026 Portfolio | Lê Trọng Phúc
+
+</footer>
+
+<script>
+
+/* =========================
+   THEME
+========================= */
+
+function toggleTheme(){
+    document.body.classList.toggle("light");
+}
+
+/* =========================
+   SNOW EFFECT
+========================= */
+
+const bg = document.getElementById("bg");
+
+for(let i=0;i<120;i++){
+
+    let dot = document.createElement("span");
+
+    dot.style.left = Math.random()*100 + "vw";
+
+    dot.style.animationDuration =
+    (Math.random()*5 + 5) + "s";
+
+    dot.style.opacity = Math.random();
+
+    dot.style.width =
+    dot.style.height =
+    Math.random()*5 + 2 + "px";
+
+    bg.appendChild(dot);
+}
+
+</script>
+
+</body>
+</html>
